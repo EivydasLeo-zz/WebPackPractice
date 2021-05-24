@@ -1,0 +1,22 @@
+{
+  "name": "webpackpractice",
+  "version": "1.0.0",
+  "description": "WebPack Practice",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EivydasLeo/WebPackPractice.git"
+  },
+  "keywords": [
+    "WebPack"
+  ],
+  "author": "E.L",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EivydasLeo/WebPackPractice/issues"
+  },
+  "homepage": "https://github.com/EivydasLeo/WebPackPractice#readme"
+}
