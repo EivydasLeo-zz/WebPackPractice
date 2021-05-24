@@ -4,7 +4,7 @@
   "description": "WebPack Practice",
   "main": "app.js",
   "scripts": {
-    "start": "webpack --mode development"
+    "start": "webpack --config webpack.dev.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/EivydasLeo/WebPackPractice/issues"
   },
-  "homepage": "https://github.com/EivydasLeo/WebPackPractice#readme"
+  "homepage": "https://github.com/EivydasLeo/WebPackPractice#readme",
+  "devDependencies": {
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0"
+  }
 }
