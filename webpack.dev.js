@@ -1,4 +1,5 @@
 const path = require("path"); // node modulis dirbti su keliais iki failu
+const HtmlWebpackPlugin = require("html-webpack-plugin"); //html generavimo pluginas
 
 module.exports = {
   mode: "development",
@@ -8,5 +9,9 @@ module.exports = {
   },
   output: {},
   module: {},
-  plugins: [],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/html/template.html",
+    }),
+  ],
 };
