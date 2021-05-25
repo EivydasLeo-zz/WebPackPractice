@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin"); //html generavimo plug
 
 module.exports = {
   mode: "development",
+  devtool: "source-map",
   entry: {
     // kuri faila paims webpack kaip pagrindini
     main: path.resolve(__dirname, "./src/app.js"),
@@ -17,6 +18,16 @@ module.exports = {
       {
         test: /\.css$/i, // pritaikom .css failam
         use: ["style-loader", "css-loader"], // uzkraunam css
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
       },
     ],
   },
