@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "webpack --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "serve": "webpack serve --open --config webpack.dev.js"
   },
   "repository": {

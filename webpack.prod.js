@@ -1,10 +1,11 @@
 const path = require("path"); // node modulis dirbti su keliais iki failu
-const HtmlWebpackPlugin = require("html-webpack-plugin"); //
+const HtmlWebpackPlugin = require("html-webpack-plugin"); //html generavimo pluginas
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  mode: "development",
-  devtool: "source-map",
+  mode: "production",
+  devtool: false,
   entry: {
     // kuri faila paims webpack kaip pagrindini
     main: path.resolve(__dirname, "./src/app.js"),
@@ -13,13 +14,9 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
-    assetModuleFilename: "images/[name][ext]",
+    assetModuleFilename: "images/[hash][ext]",
   },
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    // compress: true,
-    port: 3000,
-  },
+
   module: {
     rules: [
       {
@@ -51,6 +48,18 @@ module.exports = {
       filename: "main.css",
     }),
 
+    new ImageMinimizerPlugin({
+      minimizerOptions: {
+        // Lossless optimization with custom option
+        // Feel free to experiment with options for better result for you
+        plugins: [
+          ["gifsicle", { interlaced: true }],
+          ["mozjpeg", { quality: 50 }],
+          ["pngquant", { quality: [0.5, 0.7] }],
+          ["svgo"],
+        ],
+      },
+    }),
     new HtmlWebpackPlugin({
       template: "./src/html/template.html",
       templateParameters: {
@@ -59,7 +68,7 @@ module.exports = {
       },
       minify: {
         removeComments: true,
-        collapseWhitespace: false,
+        collapseWhitespace: true,
       },
     }),
   ],
