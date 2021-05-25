@@ -12,6 +12,7 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
+    assetModuleFilename: "images/[name][ext]",
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
@@ -20,6 +21,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.(png|svg|jpe?g|gif)$/i,
+        type: "asset/resource",
+      },
       {
         test: /\.css$/i, // pritaikom .css failam
         use: ["style-loader", "css-loader"], // uzkraunam css
