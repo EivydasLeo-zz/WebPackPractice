@@ -1,6 +1,7 @@
 const path = require("path"); // node modulis dirbti su keliais iki failu
 const HtmlWebpackPlugin = require("html-webpack-plugin"); //html generavimo pluginas
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "development",
@@ -31,6 +32,10 @@ module.exports = {
         use: ["style-loader", "css-loader"], // uzkraunam css
       },
       {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
@@ -43,6 +48,10 @@ module.exports = {
     ],
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: "main.css",
+    }),
+
     new ImageMinimizerPlugin({
       minimizerOptions: {
         // Lossless optimization with custom option
@@ -59,7 +68,7 @@ module.exports = {
       template: "./src/html/template.html",
       templateParameters: {
         title: "Pakeiciau title per dev.js",
-        mainTitle: "Pakeiciau mainTitle per dev.js",
+        mainTitle: "Pakeiciau main Title per dev.js",
       },
       minify: {
         removeComments: true,
