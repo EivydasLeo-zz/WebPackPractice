@@ -2,6 +2,7 @@ const path = require("path"); // node modulis dirbti su keliais iki failu
 const HtmlWebpackPlugin = require("html-webpack-plugin"); //html generavimo pluginas
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
   mode: "production",
@@ -72,4 +73,7 @@ module.exports = {
       },
     }),
   ],
+  optimization: {
+    minimizer: [new CssMinimizerPlugin()],
+  },
 };
