@@ -12,7 +12,14 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
-  module: {},
+  module: {
+    rules: [
+      {
+        test: /\.css$/i, // pritaikom .css failam
+        use: ["style-loader", "css-loader"], // uzkraunam css
+      },
+    ],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/html/template.html",
