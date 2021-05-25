@@ -1,6 +1,8 @@
 export default function calcAndtext(a, b, c, d, text) {
-  const summAndText = a + b + c + d + "-" + " " + text;
+  // eslint-disable-next-line no-useless-concat
+  const summAndText = `${a + b + c + d}-` + ` ${text}`;
   return summAndText;
 }
 
-console.log("hi from function.js ");
+// eslint-disable-next-line no-console
+console.log('hi from function.js ');
